@@ -1,0 +1,16 @@
+FROM node:20
+
+WORKDIR /app
+
+COPY: ./front .
+
+# Install frontend dependencies
+RUN cd frontend && npm install
+
+# Angular needs to be global
+RUN npm install -g @angular/cli
+
+EXPOSE 8081
+
+#start front-end
+CMD ["ng","serve","--port 8081"]
